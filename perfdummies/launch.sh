@@ -1,0 +1,5 @@
+BASEDIR=$(dirname $0)
+CATALINA_HOME=${BASEDIR}/tomcat
+CATALINA_OPTS=-Xmx128m
+$CATALINA_HOME/bin/startup.sh
+
