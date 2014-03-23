@@ -171,6 +171,11 @@
             <artifactId>h2</artifactId>
             <version>1.3.156</version>
         </dependency>
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901.jdbc4</version>
+        </dependency>
 
         <!-- Test -->
         <dependency>
@@ -275,6 +280,27 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.0</version>
             </plugin>
-        </plugins>
+		<!-- La commande hibernate3:hbm2ddl permet de générer le schéma SQL de 
+				la base correspondant au mapping Hibernate -->
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>hibernate3-maven-plugin</artifactId>
+			<version>2.2</version>
+			<configuration>
+                <components>
+                    <component>
+                        <name>hbm2ddl</name>
+                        <implementation>jpaconfiguration</implementation>
+                    </component>
+                </components>
+				<componentProperties>
+					<export>false</export>
+					<update>false</update>
+					<outputfilename>schema.sql</outputfilename>
+                    <jpaconfiguration propertyfile="hibernate.properties"/>
+				</componentProperties>
+			</configuration>
+		</plugin>
+	</plugins>
     </build>
 </project>

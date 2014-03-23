@@ -10,6 +10,7 @@
     <import resource="classpath:/META-INF/spring/common-context.xml"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="file:/etc/happystore/overrides.properties" />
         <property name="ignoreResourceNotFound" value="true"/>
         <property name="properties">
             <props>
