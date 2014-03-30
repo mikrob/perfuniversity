@@ -28,7 +28,7 @@ public class SaleTransaction  implements Serializable {
 	private String clientName;
 	private BigDecimal totalAmount;
 	private String changeAmount;
-	private Long discountRate;
+	private BigDecimal discountRate;
 	private String discountAmount;
 	private Integer cancellationTicketNumber;
 	private Integer cancellationType;
@@ -134,11 +134,11 @@ public class SaleTransaction  implements Serializable {
 		this.changeAmount = changeAmount;
 	}
 
-	public Long getDiscountRate() {
+	public BigDecimal getDiscountRate() {
 		return discountRate;
 	}
 
-	public void setDiscountRate(Long discountRate) {
+	public void setDiscountRate(BigDecimal discountRate) {
 		this.discountRate = discountRate;
 	}
 

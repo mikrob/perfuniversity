@@ -100,7 +100,7 @@ public final class SampleFactory {
 		saleOperation.setCashierNumber(1);
 		saleOperation.setDate(SampleFactory.buildDate(2012, 01, 01));
 		saleOperation.setDiscountAmount("discountAmount");
-		saleOperation.setDiscountRate(1L);
+		saleOperation.setDiscountRate(BigDecimal.ONE);
 		saleOperation.setGroupId(1);
 		saleOperation.setIncreaseRate(1L);
 		saleOperation.setIsBackToStock(false);
@@ -130,7 +130,7 @@ public final class SampleFactory {
 		saleTransaction.setClientName("clientName");
 		saleTransaction.setClientNumber(1);
 		saleTransaction.setDiscountAmount("discountAmount");
-		saleTransaction.setDiscountRate(1L);
+		saleTransaction.setDiscountRate(BigDecimal.ONE);
 		saleTransaction.setGroupId(1);
 		saleTransaction.setStartDate(SampleFactory.buildDate(2012, 01, 01));
 		saleTransaction.setTicketNumber(1);

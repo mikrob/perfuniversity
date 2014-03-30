@@ -81,7 +81,7 @@ public class TransactionService {
 			saleTransaction.setClientName("clientName");
 			saleTransaction.setClientNumber(1);
 			saleTransaction.setDiscountAmount("discountAmount");
-			saleTransaction.setDiscountRate(0L);
+			saleTransaction.setDiscountRate(BigDecimal.ZERO);
 			saleTransaction.setGroupId(1);
 			saleTransaction.setStartDate(new Date());
 			saleTransaction.setTicketNumber(1);
@@ -108,7 +108,7 @@ public class TransactionService {
 		Calendar calendar = Calendar.getInstance();
 		saleOperation.setDate(calendar.getTime());
 		saleOperation.setDiscountAmount("discountAmount");
-		saleOperation.setDiscountRate(1L);
+		saleOperation.setDiscountRate(BigDecimal.ONE);
 		saleOperation.setGroupId(1);
 		saleOperation.setIncreaseRate(1L);
 		saleOperation.setIsBackToStock(false);

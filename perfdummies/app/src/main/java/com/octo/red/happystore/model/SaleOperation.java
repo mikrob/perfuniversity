@@ -37,7 +37,7 @@ public class SaleOperation  implements Serializable {
 	private Boolean isBackToStock;
 	private String reloadCode;
 	private Integer specialOperationTypeSalePrice;
-	private Long discountRate;
+	private BigDecimal discountRate;
 	private String discountAmount;
 	private Long increaseRate;
 	private Boolean isScanned;
@@ -191,11 +191,11 @@ public class SaleOperation  implements Serializable {
 		this.specialOperationTypeSalePrice = specialOperationTypeSalePrice;
 	}
 
-	public Long getDiscountRate() {
+	public BigDecimal getDiscountRate() {
 		return discountRate;
 	}
 
-	public void setDiscountRate(Long discountRate) {
+	public void setDiscountRate(BigDecimal discountRate) {
 		this.discountRate = discountRate;
 	}
 

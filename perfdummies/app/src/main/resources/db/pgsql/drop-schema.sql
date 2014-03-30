@@ -8,4 +8,4 @@ drop table CategoryFamily_VAT;
 drop table CategoryFamily;
 drop table VAT;
 drop table Country;
-drop table hibernate_unique_key;
+
