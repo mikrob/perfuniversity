@@ -1,7 +1,18 @@
-\copy STORE  FROM '../../../../../data/small/Store.csv' DELIMITER ',' CSV;a
-\copy CATEGORYFAMILY FROM '../../../../../data/small/CategoryFamily.csv' DELIMITER ',' CSV;
-\copy CATEGORYFAMILY_VAT FROM '../../../../../data/small/CategoryFamily_VAT.csv' DELIMITER ',' CSV;
-\copy PRODUCT  FROM '../../../../../data/small/Product.csv' DELIMITER ',' CSV;
-\copy STOCK  FROM '../../../../../data/small/Stock.csv' DELIMITER ',' CSV;
-\copy SALEOPERATION FROM '../../../../../data/small/SaleOperation.csv' DELIMITER ',' CSV;
-\copy SALETRANSACTION FROM '../../../../../data/small/SaleTransaction.csv' DELIMITER ',' CSV;
+\copy VAT from 'data/VAT.csv' DELIMITER ',' CSV;
+\copy STORE  FROM 'data/Store.csv' DELIMITER ',' CSV;
+\copy CATEGORYFAMILY FROM 'data/CategoryFamily.csv' DELIMITER ',' CSV;
+\copy CATEGORYFAMILY_VAT FROM 'data/CategoryFamily_VAT.csv' DELIMITER ',' CSV;
+\copy PRODUCT  FROM 'data/Product.csv' DELIMITER ',' CSV;
+\copy STOCK  FROM 'data/Stock.csv' DELIMITER ',' CSV;
+\copy SALETRANSACTION FROM 'data/SaleTransaction.csv' DELIMITER ',' CSV;
+\copy SALEOPERATION FROM 'data/SaleOperation.csv' DELIMITER ',' CSV;
+SELECT setval('hibernate_sequence', 13126499, true);
+
+VACUUM (VERBOSE, ANALYZE) VAT;
+VACUUM (VERBOSE, ANALYZE) STORE;
+VACUUM (VERBOSE, ANALYZE) CATEGORYFAMILY;
+VACUUM (VERBOSE, ANALYZE) CATEGORYFAMILY_VAT;
+VACUUM (VERBOSE, ANALYZE) PRODUCT;
+VACUUM (VERBOSE, ANALYZE) STOCK;
+VACUUM (VERBOSE, ANALYZE) SALETRANSACTION;
+VACUUM (VERBOSE, ANALYZE) SALEOPERATION;

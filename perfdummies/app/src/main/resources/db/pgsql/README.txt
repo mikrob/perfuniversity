@@ -11,7 +11,7 @@ exit
 psql -h localhost -U happystore -f src/main/resources/db/pgsql/drop-schema.sql
 psql -h localhost -U happystore -f src/main/resources/db/pgsql/schema.sql
 psql -h localhost -U happystore -f src/main/resources/db/pgsql/test-data.sql
-psql -h localhost -U happystore -f src/main/resources/db/pgsql/import_2.sql
+psql -h localhost -U happystore -f src/main/resources/db/pgsql/import.sql
 psql -h localhost -U happystore
 
 echo "dataSource.url=jdbc:postgresql://localhost/happystore" >> /etc/happystore/overrides.properties
@@ -25,5 +25,9 @@ echo "initialize-database.enabled=false" >> /etc/happystore/overrides.properties
 #\q for quit
 #\d <tablename> to describe
 
-
-
+#For backup
+#sudo su postgres
+#pgdump_all | gzip > /opt/postgresql/9.1/backup/happystore_bck_201401041530.gz
+# for restore
+#createdb -O happystore -E UTF8 happystore
+#pg_restore -C /opt/postgresql/9.1/backup/happystore_bck_201401041530.gz
