@@ -17,3 +17,4 @@ alter table Stock add constraint FK4C806F62795D417 foreign key (product_id) refe
 alter table Stock add constraint FK4C806F638A20217 foreign key (store_id) references Store;
 alter table VAT add constraint FK14B09E495EE9E foreign key (country_alpha3Code) references Country;
 create sequence hibernate_sequence;
+--CREATE INDEX GRPID_DATE_INDEX ON SaleOperation (groupId ASC, OPERATIONDATE ASC);
