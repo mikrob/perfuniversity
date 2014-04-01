@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="classpath:/META-INF/spring/common-context.xml"/>
+	
+	<jdbc:embedded-database id="dataSource" type="H2" />
+	
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" >
+			<property name="showSql" value="false"/>
+            <property name="generateDdl" value="true"/>
+            <property name="database" value="H2"/>
+<!--             <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" /> -->
+    </bean>
+    
+    
+</beans>

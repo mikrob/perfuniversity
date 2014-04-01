@@ -1,0 +1,4 @@
+ id | deletiondate | groupid | isdeletable | isexempted | vatlabel | vatrate | vattype | country_alpha3code 
+----+--------------+---------+-------------+------------+----------+---------+---------+--------------------
+(0 rows)
+
