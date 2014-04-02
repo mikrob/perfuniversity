@@ -56,6 +56,7 @@ public class Product implements Serializable {
 
 	@OneToOne
 	private Product parentProduct;
+	
 	@OneToMany(mappedBy = "parentProduct")
 	private Set<Product> childProducts;
 
