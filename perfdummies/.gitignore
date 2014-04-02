@@ -1,4 +1,5 @@
-app/happystore.iml
-app/log.txt
-data
-
+target/
+.idea/
+*.iml
+.classpath
+.project
