@@ -17,7 +17,7 @@
 
     <modules>
       <module>app</module>
-      <module>gatling</module>
+      <module>injector</module>
     </modules>
     
 </project>
