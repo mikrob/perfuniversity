@@ -46,7 +46,7 @@ class FullSimulation extends Simulation {
 			.queryParam("productId", "${productId}")
 			.queryParam("storeId", "${storeId}")
 			.headers(headers)
-			.check(regex(""".*\{"txId":([0-9]*),.*""").exists.saveAs("transactionId"))
+			.check(regex(""""txId":([0-9]+)""").exists.saveAs("transactionId"))
 		)
 		.pause(0 * thinkRatio, 1 * thinkRatio)
 		.doIf((s: Session) => {
