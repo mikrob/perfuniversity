@@ -1,4 +1,2 @@
 BASEDIR=$(dirname $0)
-GATLING_HOME=$BASEDIR/gatling
-"$GATLING_HOME/bin/gatling.sh" -s FullSimulation
-
+mvn -f $BASEDIR/injector/pom.xml gatling:execute -Dgatling.simulationClass=FullSimulation

@@ -38,25 +38,48 @@
     <property name="databasePlatform" value="${dataSource.dialect}"/>
   </bean>
 
-  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-    <property name="location" value="file:/etc/happystore/overrides.properties"/>
-    <property name="ignoreResourceNotFound" value="true"/>
-    <property name="properties">
-      <props>
-        <prop key="dataSource.driverClassName">org.h2.Driver</prop>
-        <prop key="dataSource.url">jdbc:h2:mem:rundb</prop>
-        <prop key="dataSource.username">sa</prop>
-        <prop key="dataSource.password"></prop>
-        <prop key="dataSource.pool.maxIdle">10</prop>
-        <prop key="dataSource.pool.maxActive">100</prop>
-        <prop key="dataSource.pool.maxWait">10000</prop>
-        <prop key="dataSource.pool.validationQuery">select 1</prop>
-        <prop key="initialize-database.enabled">true</prop>
-        <prop key="dataSource.dialect">org.hibernate.dialect.H2Dialect</prop>
-        <prop key="schema.path">classpath:db/schema.sql</prop>
-        <prop key="init-data.path">classpath:db/test-data.sql</prop>
-        <prop key="showSql">false</prop>
-      </props>
-    </property>
-  </bean>
+  <beans profile="h2">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+      <property name="properties">
+        <props>
+          <prop key="dataSource.driverClassName">org.h2.Driver</prop>
+          <prop key="dataSource.url">jdbc:h2:mem:rundb</prop>
+          <prop key="dataSource.username">sa</prop>
+          <prop key="dataSource.password"></prop>
+          <prop key="dataSource.pool.maxIdle">10</prop>
+          <prop key="dataSource.pool.maxActive">100</prop>
+          <prop key="dataSource.pool.maxWait">10000</prop>
+          <prop key="dataSource.pool.validationQuery">select 1</prop>
+          <prop key="initialize-database.enabled">true</prop>
+          <prop key="dataSource.dialect">org.hibernate.dialect.H2Dialect</prop>
+          <prop key="schema.path">classpath:db/schema.sql</prop>
+          <prop key="init-data.path">classpath:db/test-data.sql</prop>
+          <prop key="showSql">false</prop>
+        </props>
+      </property>
+    </bean>
+  </beans>
+
+  <beans profile="postgresql">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+      <property name="properties">
+        <props>
+          <prop key="dataSource.driverClassName">org.postgresql.Driver</prop>
+          <prop key="dataSource.url">jdbc:postgresql://localhost/happystore</prop>
+          <prop key="dataSource.username">happystore</prop>
+          <prop key="dataSource.password">happystore</prop>
+          <prop key="dataSource.pool.maxIdle">10</prop>
+          <prop key="dataSource.pool.maxActive">100</prop>
+          <prop key="dataSource.pool.maxWait">10000</prop>
+          <prop key="dataSource.pool.validationQuery">select 1</prop>
+          <prop key="initialize-database.enabled">false</prop>
+          <prop key="dataSource.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+          <prop key="schema.path">classpath:db/schema.sql</prop>
+          <prop key="init-data.path">classpath:db/test-data.sql</prop>
+          <prop key="showSql">false</prop>
+        </props>
+      </property>
+    </bean>
+  </beans>
+
 </beans>
