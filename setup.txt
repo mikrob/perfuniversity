@@ -46,3 +46,11 @@ cap appserver-devoxx chef
 cap toolserver-devoxx chef
 
 ou chef:local, mais faudra cloner master-cap et master-chef au même niveau que perfuniversity dans l'arbo
+
+
+sur app server si vous deployez l'appli dans l'instance tomcat (/opt/tomcat/instance ...)
+ce sera accessible sur http://192.168.56.10:8080/happystore
+
+sur tool server le jenkins est sur htpt://192.168.56.11/jenkins
+
+et le graphite est là http://192.168.56.11:81
