@@ -10,7 +10,7 @@ override_attributes({
   :jenkins => {
       :tomcat => {
         :env => {
-          "JAVA_OPTS": "-XX:MaxPermSize=256m -Xmx512m -Xms256m"
+          "JAVA_OPTS" => "-XX:MaxPermSize=256m -Xmx512m -Xms256m"
         }
       },
       :plugins => ["git", "git-client", "greenballs", "parameterized-trigger", "envinject","jenkins-multijob-plugin", "gatling"],

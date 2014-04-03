@@ -8,7 +8,7 @@ set :autoload_runlist, true
 set :git_repos, [
   {
     :url => "git://github.com/kitchenware/master-chef.git",
-    :ref => "6decb078c15a4b170cdf0c3e264b1d2c4e5e4a89",
+    :ref => "100a0e066ddad8465623caa0125bdd5088f05d33",
   },
   {
     :url => "git://github.com/kitchenware/master-cap.git",
