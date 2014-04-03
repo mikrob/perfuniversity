@@ -20,6 +20,7 @@
         <log4j.version>1.2.15</log4j.version>
         <spring.data.version>1.0.3.RELEASE</spring.data.version>
         <hibernate.version>3.6.9.Final</hibernate.version>
+        <postgresql.version>9.1-901.jdbc4</postgresql.version>
     </properties>
 
     <dependencies>
@@ -174,7 +175,7 @@
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.1-901.jdbc4</version>
+            <version>${postgresql.version}</version>
         </dependency>
 
         <!-- Test -->
@@ -301,6 +302,36 @@
 				</componentProperties>
 			</configuration>
 		</plugin>
+
+            <plugin>
+                <groupId>org.databene</groupId>
+                <artifactId>maven-benerator-plugin</artifactId>
+                <version>0.7.7</version>
+
+                <configuration>
+                    <descriptor>src/main/resources/db/pgsql/benerator.xml</descriptor>
+                    <encoding>iso-8859-1</encoding>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <version>${org.slf4j-version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-simple</artifactId>
+                        <version>1.7.6</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>${postgresql.version}</version>
+                    </dependency>
+                </dependencies>
+
+            </plugin>
 	</plugins>
     </build>
 </project>
