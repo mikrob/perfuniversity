@@ -1,5 +1,3 @@
 setlocal
-set CATALINA_HOME=%~dp0tomcat
-set CATALINA_OPTS=-Xmx128m
-"%CATALINA_HOME%\bin\startup.bat"
+call mvn -f %~dp0app\pom.xml tomcat7:run
 endlocal

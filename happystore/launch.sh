@@ -1,5 +1,2 @@
 BASEDIR=$(dirname $0)
-CATALINA_HOME=${BASEDIR}/tomcat
-CATALINA_OPTS=-Xmx128m
-$CATALINA_HOME/bin/startup.sh
-
+mvn mvn -f ${BASEDIR}/app/pom.xml tomcat7:run
