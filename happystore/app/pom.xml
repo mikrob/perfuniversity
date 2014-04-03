@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.octo.red</groupId>
-    <artifactId>happystore-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
-  
+    <parent>
+        <groupId>com.octo.red</groupId>
+        <artifactId>happystore-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <artifactId>happystore</artifactId>
     <name>Happy Store</name>
     <packaging>war</packaging>
@@ -105,66 +105,13 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.8.3</version>
         </dependency>
-    <!-- Spring -->
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-jpa</artifactId>
-      <version>${spring.data.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context-support</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-aop</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>${org.springframework-version}</version>
-      <exclusions>
-        <!-- Exclude Commons Logging in favor of SLF4j -->
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-tx</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-beans</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
 
-    <!-- Jackson -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>2.3.1</version>
-    </dependency>
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.3.1</version>
+        </dependency>
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -387,27 +334,27 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.0</version>
             </plugin>
-		<!-- La commande hibernate3:hbm2ddl permet de générer le schéma SQL de 
-				la base correspondant au mapping Hibernate -->
-		<plugin>
-			<groupId>org.codehaus.mojo</groupId>
-			<artifactId>hibernate3-maven-plugin</artifactId>
-			<version>2.2</version>
-			<configuration>
-                <components>
-                    <component>
-                        <name>hbm2ddl</name>
-                        <implementation>jpaconfiguration</implementation>
-                    </component>
-                </components>
-				<componentProperties>
-					<export>false</export>
-					<update>false</update>
-					<outputfilename>schema.sql</outputfilename>
-                    <jpaconfiguration propertyfile="hibernate.properties"/>
-				</componentProperties>
-			</configuration>
-		</plugin>
+            <!-- La commande hibernate3:hbm2ddl permet de générer le schéma SQL de
+                    la base correspondant au mapping Hibernate -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>hibernate3-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <components>
+                        <component>
+                            <name>hbm2ddl</name>
+                            <implementation>jpaconfiguration</implementation>
+                        </component>
+                    </components>
+                    <componentProperties>
+                        <export>false</export>
+                        <update>false</update>
+                        <outputfilename>schema.sql</outputfilename>
+                        <jpaconfiguration propertyfile="hibernate.properties"/>
+                    </componentProperties>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.databene</groupId>
@@ -440,15 +387,15 @@
                     </dependency>
                 </dependencies>
             </plugin>
-      <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
-        <configuration>
-          <port>8080</port>
-          <path>/happystore</path>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8080</port>
+                    <path>/happystore</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
