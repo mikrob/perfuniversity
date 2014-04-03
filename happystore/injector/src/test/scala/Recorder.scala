@@ -5,6 +5,6 @@ object Recorder extends App {
 
 	RecorderController(new RecorderOptions(
 		outputFolder = Some(IDEPathHelper.recorderOutputDirectory.toString),
-		simulationPackage = Some("com.javamind.gatling"),
+		simulationPackage = Some("simulations"),
 		requestBodiesFolder = Some(IDEPathHelper.requestBodiesDirectory.toString)))
 }
