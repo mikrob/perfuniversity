@@ -34,7 +34,7 @@
   </pluginRepositories>
 
   <properties>
-    <scala.version>2.10.4</scala.version>
+    <scala.version>2.9.3</scala.version>
 
     <gatling.version>1.5.5</gatling.version>
     <gatling-highcharts.version>1.5.5</gatling-highcharts.version>
