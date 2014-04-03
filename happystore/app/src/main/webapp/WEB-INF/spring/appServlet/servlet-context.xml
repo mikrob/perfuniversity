@@ -26,7 +26,7 @@
 		</beans:property>
 		<beans:property name="defaultViews">
 			<beans:list>
-				<beans:bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+				<beans:bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 			</beans:list>
 		</beans:property>
 	</beans:bean>

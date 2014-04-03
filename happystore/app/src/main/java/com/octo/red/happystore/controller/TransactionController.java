@@ -22,7 +22,7 @@ public class TransactionController {
 	@Autowired
 	TransactionService service;
 	
-	@RequestMapping(value = "/transaction", method = RequestMethod.GET)
+	@RequestMapping(value = "/transaction", method = RequestMethod.GET, produces="application/json")
 	public @ResponseBody Model getTransaction(
 			@RequestParam("countryCode") String countryCode,
 			@RequestParam("productId") Long productId, 
@@ -49,7 +49,7 @@ public class TransactionController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/total", method = RequestMethod.GET)
+	@RequestMapping(value = "/total", method = RequestMethod.GET, produces="application/json")
 	public @ResponseBody Model getTotal(@RequestParam("txId") Long txId, Model model) {
 		logger.info("Request received [txId={}] on /total", new Object[]{txId});
 
