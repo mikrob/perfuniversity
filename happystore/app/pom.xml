@@ -17,12 +17,12 @@
         <java-version>1.6</java-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <org.springframework-version>3.0.6.RELEASE</org.springframework-version>
+        <org.springframework-version>4.0.3.RELEASE</org.springframework-version>
         <org.aspectj-version>1.6.9</org.aspectj-version>
         <org.slf4j-version>1.5.10</org.slf4j-version>
         <org.mortbay.jetty-version>8.1.0.v20120127</org.mortbay.jetty-version>
         <log4j.version>1.2.15</log4j.version>
-        <spring.data.version>1.0.3.RELEASE</spring.data.version>
+        <spring.data.version>1.5.1.RELEASE</spring.data.version>
         <hibernate.version>3.6.9.Final</hibernate.version>
         <postgresql.version>9.1-901.jdbc4</postgresql.version>
         <metrics.version>3.0.2</metrics.version>
@@ -83,6 +83,21 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
         <dependency>
@@ -187,8 +202,34 @@
         <!-- Metrics -->
         <dependency>
             <groupId>com.codahale.metrics</groupId>
-            <artifactId>metrics-core</artifactId>
+            <artifactId>metrics-graphite</artifactId>
             <version>${metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codahale.metrics</groupId>
+            <artifactId>metrics-jvm</artifactId>
+            <version>${metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codahale.metrics</groupId>
+            <artifactId>metrics-servlet</artifactId>
+            <version>${metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codahale.metrics</groupId>
+            <artifactId>metrics-servlets</artifactId>
+            <version>${metrics.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.codahale.metrics</groupId>
+                    <artifactId>metrics-healthchecks</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.ryantenney.metrics</groupId>
+            <artifactId>metrics-spring</artifactId>
+            <version>${metrics-spring.version}</version>
         </dependency>
 
         <!-- Test -->
@@ -324,6 +365,9 @@
                 <configuration>
                     <descriptor>src/main/resources/db/pgsql/benerator.xml</descriptor>
                     <encoding>iso-8859-1</encoding>
+                    <dbDriver/>
+                    <dbUrl/>
+                    <xmlRoot/>
                 </configuration>
 
                 <dependencies>
