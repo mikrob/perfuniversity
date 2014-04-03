@@ -14,6 +14,7 @@ psql -h localhost -U happystore -f src/main/resources/db/pgsql/test-data.sql
 psql -h localhost -U happystore -f src/main/resources/db/pgsql/import.sql
 psql -h localhost -U happystore
 
+echo "dataSource.driverClassName=org.postgresql.Driver"      >> /etc/happystore/overrides.properties
 echo "dataSource.url=jdbc:postgresql://localhost/happystore" >> /etc/happystore/overrides.properties
 echo "dataSource.username=happystore"                        >> /etc/happystore/overrides.properties
 echo "dataSource.password=happystore"                        >> /etc/happystore/overrides.properties
