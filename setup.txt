@@ -44,3 +44,5 @@ puis on lance les installs :
 
 cap appserver-devoxx chef
 cap toolserver-devoxx chef
+
+ou chef:local, mais faudra cloner master-cap et master-chef au même niveau que perfuniversity dans l'arbo
