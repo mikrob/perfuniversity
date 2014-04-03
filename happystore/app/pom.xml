@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -105,15 +105,6 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.8.3</version>
         </dependency>
-
-<<<<<<< HEAD
-        <!-- AspectJ -->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>${org.aspectj-version}</version>
-        </dependency>
-=======
     <!-- Spring -->
     <dependency>
       <groupId>org.springframework.data</groupId>
@@ -174,8 +165,6 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.3.1</version>
     </dependency>
->>>>>>> 80df96faad5915214bd45575d7e4c4d6b319e246
-
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -450,13 +439,7 @@
                         <version>${postgresql.version}</version>
                     </dependency>
                 </dependencies>
-
-<<<<<<< HEAD
             </plugin>
-	</plugins>
-    </build>
-=======
-      </plugin>
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
@@ -468,5 +451,4 @@
       </plugin>
     </plugins>
   </build>
->>>>>>> 80df96faad5915214bd45575d7e4c4d6b319e246
 </project>
