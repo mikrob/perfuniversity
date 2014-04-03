@@ -1,4 +1,3 @@
 setlocal
-set GATLING_HOME=%~dp0gatling
-"%GATLING_HOME%\bin\gatling.bat" -s FullSimulation
+call mvn -f injector\pom.xml gatling:execute -Dgatling.simulationClass=FullSimulation
 endlocal
