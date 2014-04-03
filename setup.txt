@@ -1,0 +1,48 @@
+pré requis : 
+
+installer virtualbox via l'installer du site
+installer vagrant via l'installer du site
+
+pour tout installer :
+
+- dans le repertoire vms : vagrant up dans chaque repertoire de vm
+- vagrant ssh  dans le repertoire de chaque vm puis ajouter votre clef publique dans .ssh/authorized_keys
+- tester que vous pouvez bien faire
+ssh vagrant@192.168.56.10
+ssh vagrant@192.168.56.11
+sans invite de mot de passe (et mettez le yes pour le know hosts)
+
+sur chaque vm : sudo apt-get install curl (la box que j'ai pris l'a pas par defaut ...)
+
+
+clonez master-cap en local
+
+git clone git@github.com:kitchenware/master-cap.git
+
+ensuite se placer à la racine de perfuniversity
+
+modifier le gemfile pour faire correspondre le local de master-cap à votre clone
+
+conseil : installer un offline-proxy (https://github.com/bpaquet/offline-proxy git clone puis node proxy.js, puis changez l'ip dans topology/devoxx.yml)
+sinon commenter la ligne :http_proxy: 'http://192.168.56.1:3128' dans topology/devoxx.yml
+
+puis :
+
+export DEV=1
+
+ensuite (installation de chef/master-chef dans les vms):
+
+cap appserver-devoxx chef:install -s user=vagrant
+cap toolserver-devoxx chef:install -s user=vagrant
+
+ensuite generation de la conf de la machine :
+
+cap appserver-devoxx chef:generate_local_json
+cap toolserver-devoxx chef:generate_local_json
+
+puis on lance les installs :
+
+cap appserver-devoxx chef
+cap toolserver-devoxx chef
+
+ou chef:local, mais faudra cloner master-cap et master-chef au même niveau que perfuniversity dans l'arbo
