@@ -1,0 +1,15 @@
+:topology:
+  :appserver:
+    :hostname: 192.168.56.10
+    :type: linux_chef
+    :roles:
+      - appserver
+  :toolserver:
+    :hostname: 192.168.56.11
+    :type: linux_chef
+    :roles:
+      - toolserver
+:cap_override:
+  :http_proxy: 'http://192.168.56.1:3128'
+:default_role_list:
+  - base
