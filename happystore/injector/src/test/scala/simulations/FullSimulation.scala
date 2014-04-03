@@ -76,7 +76,7 @@ class FullSimulation extends Simulation {
 			.headers(headers)
       .check(status.is(200), regex(""".*"amount".*"""))
 		)
-		.pause(1 * thinkRatio, 1 * thinkRatio)
+		.pause(1 * thinkRatio, 2 * thinkRatio)
 	}
 	
 	val ivtScn = scenario("Inventory scenario")
