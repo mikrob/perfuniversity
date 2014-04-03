@@ -83,6 +83,7 @@ public class CacheManager {
         return out.toByteArray();
     }
 
+    @SuppressWarnings("unchecked")
     private static <T> T unmarshall(byte[] buffer) {
         ObjectInputStream in;
         try {
