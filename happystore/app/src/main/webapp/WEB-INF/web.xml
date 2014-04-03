@@ -56,7 +56,7 @@
 
   <filter>
     <filter-name>stat</filter-name>
-    <filter-class>com.octo.red.happystore.controller.StatFilter</filter-class>
+    <filter-class>com.octo.red.happystore.web.StatFilter</filter-class>
   </filter>
 
   <filter-mapping>
