@@ -37,7 +37,7 @@ class FullSimulation extends Simulation {
 	val products = csv("products.csv").random
 	
 	val txScn = scenario("Transaction scenario")
-			.feed(products)
+		.feed(products)
 		.during(duration) {
 		exec(
 			http("transaction_new")
@@ -46,7 +46,7 @@ class FullSimulation extends Simulation {
 			.queryParam("productId", "${productId}")
 			.queryParam("storeId", "${storeId}")
 			.headers(headers)
-			.check(regex(""".*\{"txId":([0-9]*),.*""").exists.saveAs("transactionId"))
+			.check(regex(""""txId":([0-9]+)""").exists.saveAs("transactionId"))
 		)
 		.pause(0 * thinkRatio, 1 * thinkRatio)
 		.doIf((s: Session) => {
@@ -76,11 +76,11 @@ class FullSimulation extends Simulation {
 			.headers(headers)
       .check(status.is(200), regex(""".*"amount".*"""))
 		)
-		.pause(1 * thinkRatio, 1 * thinkRatio)
+		.pause(1 * thinkRatio, 2 * thinkRatio)
 	}
 	
 	val ivtScn = scenario("Inventory scenario")
-			.feed(products)
+		.feed(products)
 		.during(duration){
 		exec(
 			http("Inventory")
@@ -93,7 +93,7 @@ class FullSimulation extends Simulation {
 	}
 	
 	val toScn = scenario("Turnover scenario")
-			.feed(groups)
+		.feed(groups)
 		.during(duration){
 		exec(
 			http("turnover")

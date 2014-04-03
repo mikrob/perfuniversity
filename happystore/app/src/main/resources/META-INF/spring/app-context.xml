@@ -47,7 +47,7 @@
           <prop key="dataSource.username">sa</prop>
           <prop key="dataSource.password"></prop>
           <prop key="dataSource.pool.maxIdle">10</prop>
-          <prop key="dataSource.pool.maxActive">100</prop>
+          <prop key="dataSource.pool.maxActive">95</prop>
           <prop key="dataSource.pool.maxWait">10000</prop>
           <prop key="dataSource.pool.validationQuery">select 1</prop>
           <prop key="initialize-database.enabled">true</prop>
@@ -69,7 +69,7 @@
           <prop key="dataSource.username">happystore</prop>
           <prop key="dataSource.password">happystore</prop>
           <prop key="dataSource.pool.maxIdle">10</prop>
-          <prop key="dataSource.pool.maxActive">100</prop>
+          <prop key="dataSource.pool.maxActive">95</prop>
           <prop key="dataSource.pool.maxWait">10000</prop>
           <prop key="dataSource.pool.validationQuery">select 1</prop>
           <prop key="initialize-database.enabled">false</prop>
