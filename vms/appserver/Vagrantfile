@@ -6,4 +6,5 @@ Vagrant::Config.run do |config|
   config.vm.network :hostonly, "192.168.56.10"
   config.vm.host_name = "appserver"
   config.vm.customize ["modifyvm", :id, "--memory", 1024]
+  config.vm.provision :shell, :path => "bootstrap.sh"
 end
