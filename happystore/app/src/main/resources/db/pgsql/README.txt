@@ -31,3 +31,9 @@ echo "initialize-database.enabled=false" >> /etc/happystore/overrides.properties
 # for restore
 #createdb -O happystore -E UTF8 happystore
 #pg_restore -C /opt/postgresql/9.1/backup/happystore_bck_201401041530.gz
+
+#For Benerator
+sudo -i -u postgres
+createdb -O happystore -E UTF8 benerator
+psql -h localhost -d benerator -U happystore -f src/main/resources/db/pgsql/drop-schema.sql
+psql -h localhost -d benerator -U happystore -f src/main/resources/db/pgsql/schema.sql
