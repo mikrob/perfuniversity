@@ -3,7 +3,8 @@ name('toolserver')
 run_list([
   "recipe[jenkins]",
   "recipe[jenkins_perf]",
-  "recipe[java::java_oracle_java7]"
+  "recipe[java::java_oracle_java7]",
+  "recipe[graphite]"
 ])
 
 override_attributes({
@@ -31,5 +32,10 @@ override_attributes({
       "libdb4.8-dev",
       "libcrack2-dev",
       "make"
-    ]
+    ],
+    :graphite => {
+      :graphite => {
+        :listen => "0.0.0.0:81"
+      }
+    }
 })
