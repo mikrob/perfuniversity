@@ -37,7 +37,7 @@ class FullSimulation extends Simulation {
 	val products = csv("products.csv").random
 	
 	val txScn = scenario("Transaction scenario")
-			.feed(products)
+		.feed(products)
 		.during(duration) {
 		exec(
 			http("transaction_new")
@@ -80,7 +80,7 @@ class FullSimulation extends Simulation {
 	}
 	
 	val ivtScn = scenario("Inventory scenario")
-			.feed(products)
+		.feed(products)
 		.during(duration){
 		exec(
 			http("Inventory")
@@ -93,7 +93,7 @@ class FullSimulation extends Simulation {
 	}
 	
 	val toScn = scenario("Turnover scenario")
-			.feed(groups)
+		.feed(groups)
 		.during(duration){
 		exec(
 			http("turnover")
