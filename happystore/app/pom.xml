@@ -26,6 +26,7 @@
         <hibernate.version>3.6.9.Final</hibernate.version>
         <postgresql.version>9.1-901.jdbc4</postgresql.version>
         <metrics.version>3.0.2</metrics.version>
+        <metrics-spring.version>3.0.0-RC4</metrics-spring.version>
     </properties>
 
     <dependencies>
@@ -189,6 +190,37 @@
             <artifactId>metrics-core</artifactId>
             <version>${metrics.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.codahale.metrics</groupId>
+            <artifactId>metrics-graphite</artifactId>
+	    <version>${metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codahale.metrics</groupId>
+            <artifactId>metrics-jvm</artifactId>
+            <version>${metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codahale.metrics</groupId>
+            <artifactId>metrics-servlet</artifactId>
+            <version>${metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codahale.metrics</groupId>
+            <artifactId>metrics-servlets</artifactId>
+	    <version>${metrics.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.codahale.metrics</groupId>
+                    <artifactId>metrics-healthchecks</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.ryantenney.metrics</groupId>
+            <artifactId>metrics-spring</artifactId>
+            <version>${metrics-spring.version}</version>
+        </dependency>
 
         <!-- Test -->
         <dependency>
@@ -323,6 +355,9 @@
                 <configuration>
                     <descriptor>src/main/resources/db/pgsql/benerator.xml</descriptor>
                     <encoding>iso-8859-1</encoding>
+                    <dbDriver/>
+                    <dbUrl/>
+                    <xmlRoot/>
                 </configuration>
 
                 <dependencies>
