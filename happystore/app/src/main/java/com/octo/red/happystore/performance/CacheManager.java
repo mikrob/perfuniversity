@@ -45,7 +45,7 @@ public class CacheManager {
     public void addToCache(String cacheKey, Object key, Object value) {
         Map<Object, byte[]> cache = cacheList.get(cacheKey);
         if(cache == null) {
-            cache = new IdentityHashMap<Object, byte[]>();
+            cache = new ConcurrentHashMap<Object, byte[]>();
             cacheList.put(cacheKey, cache);
         }
         // Put the object off-heap to be easy on the GC
