@@ -23,6 +23,7 @@ public class StatFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("************** Happy store started **************");
+        PerformanceMBean.init();
     }
 
     @Override
@@ -30,14 +31,18 @@ public class StatFilter implements Filter {
         if(enableLock) {
             lock.lock();
         }
-        long start = System.currentTimeMillis();
-        String url = ((HttpServletRequest) request).getRequestURL().toString();
-        String queryString = ((HttpServletRequest) request).getQueryString();
-        chain.doFilter(request, response);
-        long end = System.currentTimeMillis();
-        log.info(url + "?" + queryString + ":" + (end - start) + "ms");
-        if(enableLock) {
-            lock.unlock();
+        try {
+            long start = System.currentTimeMillis();
+            String url = ((HttpServletRequest) request).getRequestURL().toString();
+            String queryString = ((HttpServletRequest) request).getQueryString();
+            chain.doFilter(request, response);
+            long end = System.currentTimeMillis();
+            log.info(url + "?" + queryString + ":" + (end - start) + "ms");
+        }
+        finally {
+            if(enableLock) {
+                lock.unlock();
+            }
         }
     }
 
