@@ -1,4 +1,4 @@
-package com.octo.red.happystore.services;
+package com.octo.red.happystore.performance;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.octo.red.happystore.performance.CacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +42,7 @@ public class TransactionService {
 	CurrencyConverter currencyConverter;
 	
 	@Transactional
-	public synchronized SaleOperation buy(String countryCode, long productId, long storeId, Long txId) {
+	public SaleOperation buy(String countryCode, long productId, long storeId, Long txId) {
 		if(countryCode == null || countryCode.length()== 0) {
 			throw new IllegalArgumentException("countryCode must not be null");
 		}

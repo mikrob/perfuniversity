@@ -1,4 +1,4 @@
-package com.octo.red.happystore.web;
+package com.octo.red.happystore.performance;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Henri on 03/04/2014.
@@ -14,19 +16,29 @@ public class StatFilter implements Filter {
 
     private static final Logger log = LoggerFactory.getLogger(StatFilter.class);
 
+    public static transient boolean enableLock = true;
+
+    private static final Lock lock = new ReentrantLock();
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("************** Happy store started **************");
     }
 
     @Override
-    public synchronized void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        if(enableLock) {
+            lock.lock();
+        }
         long start = System.currentTimeMillis();
-        String url = ((HttpServletRequest)request).getRequestURL().toString();
-        String queryString = ((HttpServletRequest)request).getQueryString();
+        String url = ((HttpServletRequest) request).getRequestURL().toString();
+        String queryString = ((HttpServletRequest) request).getQueryString();
         chain.doFilter(request, response);
         long end = System.currentTimeMillis();
-        log.info(url+"?"+queryString+":"+(end-start)+"ms");
+        log.info(url + "?" + queryString + ":" + (end - start) + "ms");
+        if(enableLock) {
+            lock.unlock();
+        }
     }
 
     @Override
