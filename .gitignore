@@ -9,3 +9,5 @@ target/
 .settings/
 # Gatling
 injector/src/test/cache/
+# Vagrant
+.vagrant/
