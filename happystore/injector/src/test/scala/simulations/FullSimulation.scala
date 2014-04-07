@@ -12,9 +12,9 @@ class FullSimulation extends Simulation {
   val duration = 60
   val thinkRatio = 1
   // Users per scenario
-  val txUsers = 80
-  val ivtUsers = 10
-  val toUsers = 10
+  val txUsers = 200
+  val ivtUsers = 50
+  val toUsers = 50
    
 	val httpConf = httpConfig
     .baseURL(url + "/happystore")
