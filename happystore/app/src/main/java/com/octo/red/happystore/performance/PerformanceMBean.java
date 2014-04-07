@@ -14,7 +14,7 @@ public class PerformanceMBean {
 
     public static void init() {
         StatFilter.enableLock = Boolean.parseBoolean(System.getProperty("statFilterEnabled", "true"));
-        CacheManager.enabled = Boolean.parseBoolean(System.getProperty("cacheEnabled", "true"));
+        CacheManager.enabled = Boolean.parseBoolean(System.getProperty("cacheEnabled", "false"));
     }
 
     @ManagedAttribute(description="If the Stat filter (contention issue) is enabled")
