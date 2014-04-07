@@ -20,6 +20,8 @@ import com.octo.red.happystore.model.Stock;
 import com.octo.red.happystore.model.TotalVo;
 import com.octo.red.happystore.model.VAT;
 
+import javax.persistence.NonUniqueResultException;
+
 @Service
 public class TransactionService {
 	private static final String EUR = "EUR";
@@ -126,7 +128,12 @@ public class TransactionService {
 		saleOperationRepository.save(saleOperation);
 		
 		//Update the stock of the corresponding store
-		final Stock stock  = stockRepository.findOneByStoreAndProductId(storeId, productId);
+        Stock stock = null;
+        try {
+            stock = stockRepository.findOneByStoreAndProductId(storeId, productId);
+        } catch(NonUniqueResultException nonUniqueResultException) {
+            throw new SystemException(String.format("Error looking for stock for storeId {0} and productId {1}", storeId, productId));
+        }
 		if(stock == null) {
 			throw new SystemException(String.format("No stock found for storeId {0} and productId {1}", storeId, productId));
 		}
@@ -161,6 +168,7 @@ public class TransactionService {
             return v;
         }
         v = vatRepository.findOneByCountryCodeAndProductId(countryCode.toUpperCase(), productId);
+
         cacheManager.addToCache("vat", key, v);
         return v;
     }
