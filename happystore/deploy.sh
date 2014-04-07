@@ -1,7 +1,9 @@
 BASEDIR=$(dirname $0)
-IP=192.168.56.10
-USER=vagrant
 
-ssh USER@IP "sudo service tomcat stop"
-scp $BASEDIR/happystore/app/target/happystore-1.0-SNAPSHOT.war USER@IP:/var/lib/tomcat7/webapps/happystore.war
-ssh USER@IP "sudo service tomcat start"
+ssh server "sudo service tomcat7 stop"
+scp $BASEDIR/app/target/happystore-1.0-SNAPSHOT.war server:happystore.war
+ssh server "sudo chown tomcat7:tomcat7 happystore.war && sudo mv happystore.war /var/lib/tomcat7/webapps/"
+ssh server "sudo service tomcat7 start"
+
+scp -r $BASEDIR/injector/src/test/resources/data injector:gatling-charts-highcharts-1.5.5/user-files
+scp -r $BASEDIR/injector/src/test/scala/simulations injector:gatling-charts-highcharts-1.5.5/user-files
