@@ -109,7 +109,7 @@
         </consumer>
     </generate>
 
-    <generate type="CategoryFamily_VAT" count="1000" consumer="db">
+    <generate type="CategoryFamily_VAT" count="1000" consumer="db" onError="ignore">
         <reference name="CategoryFamily_id" type="long" source="db" targetType="CategoryFamily" cyclic="false" />
         <reference name="vats_id" type="long" source="db" targetType="VAT" cyclic="false" />
         <consumer class="org.databene.platform.csv.CSVEntityExporter">
