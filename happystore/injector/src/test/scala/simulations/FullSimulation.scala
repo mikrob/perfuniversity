@@ -4,7 +4,7 @@ import bootstrap._
 
 class FullSimulation extends Simulation {
 	// Target server
-  val server = "localhost"
+  val server = "192.168.56.10"
   val port = "8080"
   val url = "http://" + server + ":" + port
   // Test params (in seconds)
