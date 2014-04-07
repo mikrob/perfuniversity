@@ -38,17 +38,10 @@ cd happystore
 sh inject.sh
 ~~~
 
-Start app server VM
+Start the servers
 -------------------
 ~~~bash
-cd vms/appserver
-vagrant up
-~~~
-
-Start tool server VM
---------------------
-~~~bash
-cd vms/toolserver
+cd vm
 vagrant up
 ~~~
 
