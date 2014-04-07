@@ -1,7 +1,6 @@
 #!/bin/sh
 
 echo "=> Updating apt"
-sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update -y
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
 
