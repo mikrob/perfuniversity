@@ -9,7 +9,8 @@ class FullSimulation extends Simulation {
   val url = "http://" + server + ":" + port
   // Test params (in seconds)
   val rampUp = 10;
-  val duration = 60
+  val duration = 600
+
   val thinkRatio = 1
   // Users per scenario
   val txUsers = 200

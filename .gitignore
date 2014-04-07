@@ -8,4 +8,6 @@ target/
 .project
 .settings/
 # Gatling
-injector/src/test/cache/
+happystore/injector/src/test/cache/
+# Vagrant
+.vagrant/

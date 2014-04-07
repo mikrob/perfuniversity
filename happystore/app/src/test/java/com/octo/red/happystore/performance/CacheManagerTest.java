@@ -1,5 +1,6 @@
-package com.octo.red.happystore.services;
+package com.octo.red.happystore.performance;
 
+import com.octo.red.happystore.performance.CacheManager;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -12,12 +12,22 @@ ssh vagrant@192.168.56.10
 ssh vagrant@192.168.56.11
 sans invite de mot de passe (et mettez le yes pour le know hosts)
 
-sur chaque vm : sudo apt-get install curl (la box que j'ai pris l'a pas par defaut ...)
+sur chaque vm : sudo apt-get install curl (la box que j'ai pris l'a pas par defaut…)
+sur chaque vm : sudo apt-get install git
 
+créer un répertoire pour nos outils
+sudo mkdir /opt/devoxx
+sudo chown vagrant /opt/devoxx
+cd /opt/devoxx/
+
+installer capistrano et les gems requises :
+sudo gem install capistrano capistrano_colors trollop foodcritic require_relative
 
 clonez master-cap en local
-
 git clone git@github.com:kitchenware/master-cap.git
+
+clonez perfuniversity
+git clone git@bitbucket.org:henri_tremblay/perfuniversity.git
 
 ensuite se placer à la racine de perfuniversity
 

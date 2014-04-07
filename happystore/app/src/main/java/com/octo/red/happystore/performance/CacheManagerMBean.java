@@ -1,4 +1,4 @@
-package com.octo.red.happystore.services;
+package com.octo.red.happystore.performance;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jmx.export.annotation.ManagedAttribute;

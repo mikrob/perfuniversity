@@ -1,4 +1,4 @@
-package com.octo.red.happystore.services;
+package com.octo.red.happystore.performance;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -8,9 +8,11 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.ConcurrentReferenceHashMap;
 
 /**
  * @author Henri Tremblay
@@ -18,13 +20,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class CacheManager {
 
-    private Map<String, Map<Object, byte[]>> cacheList = new HashMap<String, Map<Object, byte[]>>();
+    public static transient boolean enabled = true;
+
+    private Map<String, Map<Object, byte[]>> cacheList = new ConcurrentHashMap<String, Map<Object, byte[]>>();
 
     private AtomicLong hit = new AtomicLong(0);
     private AtomicLong success = new AtomicLong(0);
 
     @SuppressWarnings("unchecked")
-    public synchronized <T> T getFromCache(String cacheKey, Object key) {
+    public <T> T getFromCache(String cacheKey, Object key) {
         hit.incrementAndGet();
         Map<Object, byte[]> cache = cacheList.get(cacheKey);
         if(cache == null) {
@@ -38,10 +42,10 @@ public class CacheManager {
         return null;
     }
 
-    public synchronized void addToCache(String cacheKey, Object key, Object value) {
+    public void addToCache(String cacheKey, Object key, Object value) {
         Map<Object, byte[]> cache = cacheList.get(cacheKey);
         if(cache == null) {
-            cache = new IdentityHashMap<Object, byte[]>();
+            cache = new ConcurrentHashMap<Object, byte[]>();
             cacheList.put(cacheKey, cache);
         }
         // Put the object off-heap to be easy on the GC

@@ -54,4 +54,13 @@
 	    <url-pattern>/console/*</url-pattern>
 	</servlet-mapping>
 
+  <filter>
+    <filter-name>stat</filter-name>
+    <filter-class>com.octo.red.happystore.performance.StatFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>stat</filter-name>
+    <servlet-name>appServlet</servlet-name>
+  </filter-mapping>
 </web-app>
