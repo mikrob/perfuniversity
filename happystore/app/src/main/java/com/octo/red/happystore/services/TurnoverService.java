@@ -33,7 +33,7 @@ public class TurnoverService {
 		Date actualDate = actualTestDate == null ? new Date() : actualTestDate;
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(actualDate);
-		calendar.add(Calendar.HOUR, -1);
+		calendar.add(Calendar.YEAR, -4);
 		Date minDate = calendar.getTime();
 		List<Object[]> lines = saleOperationRepository.aggregateAmount(groupId, minDate);
 		List<TurnoverVo> result = new ArrayList<TurnoverVo>(lines.size());

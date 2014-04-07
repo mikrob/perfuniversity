@@ -188,7 +188,7 @@ public final class SampleFactory {
 	 * Build a set of 5 SaleOperations with the given total amount for groupId 1 after 20111202 and before 20120101
 	 * EUR;101.1
 	 * USD;3.3
-	 * (transactions occur on 20120101 and a another transaction accurs on 20111201)
+	 * (transactions occur on 20120101 and a another transaction occurs on 20001201)
 	 * @return
 	 */
 	public static SaleOperation[] buildSaleOperationsSet() {
@@ -212,7 +212,7 @@ public final class SampleFactory {
 		so5.setGroupId(1);
 		so5.setAmount(new BigDecimal("1.1"));
 		so5.setCurrency("EUR");
-		so5.setDate(SampleFactory.buildDate(2011, 12, 1));
+		so5.setDate(SampleFactory.buildDate(2000, 12, 1));
 		final SaleOperation[] saleOperationSamples = new SaleOperation[] { so1, so2, so3, so4, so5 };
 		return saleOperationSamples;
 	}

@@ -108,7 +108,7 @@ public class DaoTest {
 		// parent in the item)...
 		entityManager.clear();
 		//When
-		List<Object[]> res = saleOperationRepository.aggregateAmount(groupId, SampleFactory.buildDate(2011, 1, 1));
+		List<Object[]> res = saleOperationRepository.aggregateAmount(groupId, SampleFactory.buildDate(2000, 1, 1));
 		//Then
 		Assert.assertNotNull(res);
 		Assert.assertEquals(2, res.size());
