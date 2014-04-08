@@ -7,6 +7,28 @@ This application is used to demonstrate the four main performance test
 * Limit testing: How many users your system can stand without breaking or getting really slow?
 * Endurance: If running for a long time, does your system provides stable performances?
 
+Install Ruby for master-cap in Windows
+--------------------------------------
+=== Install Ruby ===
+* Install http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.0.0-p451-x64.exe?direct
+* Extract http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe in C:\DevKit
+* cd C:\DevKit
+* ruby dk.rb init
+* ruby dk.rb install
+* gem install bundle
+=== Install Chocolatey ===
+* @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%systemdrive%\chocolatey\bin
+* choco sources add -name Nuget -source https://www.nuget.org/api/v2/
+=== Install nokogiri prerequisites ===
+cinst libxml2
+cinst libxslt
+cinst libiconv
+=== Install master-cap ===
+* git clone https://github.com/bpaquet/master-cap.git
+* cd master-cap
+* gem install nokogiri -v '1.5.10' -- --with-xml2-include=C:\Chocolatey\lib\libxml2.2.7.8.7\build\native\include --with-xml2-lib=C:\Chocolatey\lib\libxml2.redist.2.7.8.7\build\native\bin\v110\x64\Release\dynamic\cdecl --with-iconv-include=C:\Chocolatey\lib\libiconv.1.14.0.11\build\native\include --with-iconv-lib=C:\Chocolatey\lib\libiconv.redist.1.14.0.11\build\native\bin\v110\x64\Release\dynamic\cdecl --with-xslt-include=C:\Chocolatey\lib\libxslt.1.1.28.0\build\native\include --with-xslt-lib=C:\Chocolatey\lib\libxslt.redist.1.1.28.0\build\native\bin\v110\x64\Release\dynamic
+* bundle
+
 How to run locally
 ------------------
 ~~~bash
