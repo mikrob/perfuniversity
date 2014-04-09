@@ -34,18 +34,13 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter implements En
     private static final String PROP_METRIC_REG_JVM_THREADS = "metrics.jvm.threads";
     private static final String PROP_METRIC_REG_JVM_FILES = "metrics.jvm.files";
     private static final String PROP_METRIC_REG_JVM_BUFFERS = "metrics.jvm.buffers";
-
-    private final Logger log = LoggerFactory.getLogger(MetricsConfiguration.class);
-
     private static final MetricRegistry METRIC_REGISTRY = new MetricRegistry();
-
     private static final HealthCheckRegistry HEALTH_CHECK_REGISTRY = new HealthCheckRegistry();
-
-    private PropertyResolver propertyResolver;
+    private final Logger log = LoggerFactory.getLogger(MetricsConfiguration.class);
 
     @Override
     public void setEnvironment(Environment environment) {
-        this.propertyResolver =  environment;
+        //Nothing to do
     }
 
     @Override
@@ -62,7 +57,7 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter implements En
 
     @PostConstruct
     public void init() {
-        log.debug("Registring JVM gauges");
+        log.debug("Registering JVM gauges");
         METRIC_REGISTRY.register(PROP_METRIC_REG_JVM_MEMORY, new MemoryUsageGaugeSet());
         METRIC_REGISTRY.register(PROP_METRIC_REG_JVM_GARBAGE, new GarbageCollectorMetricSet());
         METRIC_REGISTRY.register(PROP_METRIC_REG_JVM_THREADS, new ThreadStatesGaugeSet());
@@ -97,7 +92,7 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter implements En
                         .convertRatesTo(TimeUnit.SECONDS)
                         .convertDurationsTo(TimeUnit.MILLISECONDS)
                         .build(graphite);
-                graphiteReporter.start(1, TimeUnit.MINUTES);
+                graphiteReporter.start(5, TimeUnit.SECONDS);
             }
         }
     }

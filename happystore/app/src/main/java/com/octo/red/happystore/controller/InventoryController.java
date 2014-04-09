@@ -1,5 +1,6 @@
 package com.octo.red.happystore.controller;
 
+import com.codahale.metrics.annotation.Timed;
 import com.octo.red.happystore.model.InventoryRecord;
 import com.octo.red.happystore.services.InventoryService;
 import org.slf4j.Logger;
@@ -20,17 +21,16 @@ public class InventoryController {
 	
 	@Autowired
 	private InventoryService inventoryService;
-	
-	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
-	public @ResponseBody List<InventoryRecord> getInventory(@RequestParam("storeId") long storeId) {
+
+    @Timed
+    @RequestMapping(value = "/inventory", method = RequestMethod.GET)
+    public @ResponseBody List<InventoryRecord> getInventory(@RequestParam("storeId") long storeId) {
 		
 		//List(produit, nombre, catégorie, sous-total par catégorie)
 		
 		logger.info("Request received [store={}] on /inventory", storeId);
-		
-		List<InventoryRecord> result = inventoryService.list(storeId);
-		
-		return result;
-	}
+
+        return inventoryService.list(storeId);
+    }
 
 }

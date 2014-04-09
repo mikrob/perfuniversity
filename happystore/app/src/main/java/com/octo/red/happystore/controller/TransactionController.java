@@ -1,5 +1,9 @@
 package com.octo.red.happystore.controller;
 
+import com.codahale.metrics.annotation.Timed;
+import com.octo.red.happystore.model.SaleOperation;
+import com.octo.red.happystore.model.TotalVo;
+import com.octo.red.happystore.services.TransactionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.octo.red.happystore.model.SaleOperation;
-import com.octo.red.happystore.model.TotalVo;
-import com.octo.red.happystore.services.TransactionService;
-
 @Controller
 public class TransactionController {
 
@@ -21,9 +21,10 @@ public class TransactionController {
 	
 	@Autowired
 	TransactionService service;
-	
-	@RequestMapping(value = "/transaction", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody Model getTransaction(
+
+    @Timed
+    @RequestMapping(value = "/transaction", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody Model getTransaction(
 			@RequestParam("countryCode") String countryCode,
 			@RequestParam("productId") Long productId, 
 			@RequestParam("storeId") Long storeId, 
@@ -48,9 +49,10 @@ public class TransactionController {
 		
 		return model;
 	}
-	
-	@RequestMapping(value = "/total", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody Model getTotal(@RequestParam("txId") Long txId, Model model) {
+
+    @Timed
+    @RequestMapping(value = "/total", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody Model getTotal(@RequestParam("txId") Long txId, Model model) {
 		logger.info("Request received [txId={}] on /total", new Object[]{txId});
 
 		if(txId == null) {
