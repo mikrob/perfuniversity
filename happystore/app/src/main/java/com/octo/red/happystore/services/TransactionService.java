@@ -1,27 +1,17 @@
 package com.octo.red.happystore.services;
 
-import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
-
+import com.codahale.metrics.annotation.Timed;
+import com.octo.red.happystore.dao.*;
+import com.octo.red.happystore.model.*;
 import com.octo.red.happystore.performance.CacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.octo.red.happystore.dao.ProductRepository;
-import com.octo.red.happystore.dao.SaleOperationRepository;
-import com.octo.red.happystore.dao.SaleTransactionRepository;
-import com.octo.red.happystore.dao.StockRepository;
-import com.octo.red.happystore.dao.VatRepository;
-import com.octo.red.happystore.model.Product;
-import com.octo.red.happystore.model.SaleOperation;
-import com.octo.red.happystore.model.SaleTransaction;
-import com.octo.red.happystore.model.Stock;
-import com.octo.red.happystore.model.TotalVo;
-import com.octo.red.happystore.model.VAT;
-
 import javax.persistence.NonUniqueResultException;
+import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.Date;
 
 @Service
 public class TransactionService {
@@ -42,18 +32,16 @@ public class TransactionService {
 	StockRepository stockRepository;
 	@Autowired
 	CurrencyConverter currencyConverter;
-	
-	@Transactional
-	public SaleOperation buy(String countryCode, long productId, long storeId, Long txId) {
+
+    @Timed
+    @Transactional
+    public SaleOperation buy(String countryCode, long productId, long storeId, Long txId) {
 		if(countryCode == null || countryCode.length()== 0) {
 			throw new IllegalArgumentException("countryCode must not be null");
 		}
 		
 		Product p = findProductById(productId);
 		VAT v = getVatByCountryCodeAndProductId(countryCode, productId);
-		//If no VAT is defined for this product, use the VAT for the product category it belongs to
-		if(v == null) {
-		}
 		
 		if(p == null || v == null) {
 			throw new SystemException(String.format("Product %s or VAT %s not found, check database", productId, countryCode));
@@ -65,10 +53,10 @@ public class TransactionService {
 		String operationCurrency = currencyConverter.getCurrency(countryCode);
 		BigDecimal price = currencyConverter.convert(eurPrice, EUR, operationCurrency);
 		//Update corresponding transaction
-		SaleTransaction saleTransaction = null;
-		if(txId != null) {
-			saleTransaction = saleTransactionRepository.findOne(txId);
-			if(saleTransaction == null) {
+        SaleTransaction saleTransaction;
+        if (txId != null) {
+            saleTransaction = saleTransactionRepository.findOne(txId);
+            if(saleTransaction == null) {
 				throw new SystemException("No transaction found for id " + txId);
 			}
 		} else {
@@ -129,7 +117,7 @@ public class TransactionService {
 		saleOperationRepository.save(saleOperation);
 		
 		//Update the stock of the corresponding store
-        Stock stock = null;
+        Stock stock;
         try {
             stock = stockRepository.findOneByStoreAndProductId(storeId, productId);
         } catch(NonUniqueResultException nonUniqueResultException) {
@@ -143,6 +131,7 @@ public class TransactionService {
 		
 	}
 
+    @Timed
     public TotalVo computeTotal(long txId) {
 		SaleTransaction saleTransaction = saleTransactionRepository.findOne(txId);
 		if(saleTransaction == null) {
@@ -152,6 +141,7 @@ public class TransactionService {
 		return new TotalVo(saleTransaction.getTotalAmount(), EUR);
 	}
 
+    @Timed
     private Product findProductById(long productId) {
         Product p = cacheManager.getFromCache("product", (Long) productId);
         if(p != null) {
@@ -162,6 +152,7 @@ public class TransactionService {
         return p;
     }
 
+    @Timed
     private VAT getVatByCountryCodeAndProductId(String countryCode, long productId) {
         String key = countryCode + '#' + productId;
         VAT v = cacheManager.getFromCache("vat", key);

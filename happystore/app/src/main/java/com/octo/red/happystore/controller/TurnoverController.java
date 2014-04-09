@@ -1,7 +1,8 @@
 package com.octo.red.happystore.controller;
 
-import java.util.List;
-
+import com.codahale.metrics.annotation.Timed;
+import com.octo.red.happystore.model.TurnoverVo;
+import com.octo.red.happystore.services.TurnoverService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.octo.red.happystore.model.TurnoverVo;
-import com.octo.red.happystore.services.TurnoverService;
+import java.util.List;
 
 @Controller
 public class TurnoverController {
@@ -21,14 +21,14 @@ public class TurnoverController {
 	
 	@Autowired
 	private TurnoverService turnoverService;
-	
-	@RequestMapping(value = "/turnover", method = RequestMethod.GET)
-	public @ResponseBody List<TurnoverVo> getTurnover(@RequestParam("groupId") int groupId) {
+
+    @Timed
+    @RequestMapping(value = "/turnover", method = RequestMethod.GET)
+    public @ResponseBody List<TurnoverVo> getTurnover(@RequestParam("groupId") int groupId) {
 		
 		logger.info("Request received [groupId={}] on /turnover", groupId);
-		
-		List<TurnoverVo> result = turnoverService.computeTurnover(groupId);
-		return result;
-	}
-	
+
+        return turnoverService.computeTurnover(groupId);
+    }
+
 }
