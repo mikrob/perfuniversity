@@ -72,13 +72,18 @@ Deploy the application and gatling simulations
 
 First, you need to have vagrant ssh private key in your config. Add the following to your ssh config file
 ~~~
-host server
+host app
 	hostname 192.168.56.10
 	identityfile $HOME/.vagrant.d/insecure_private_key
 	user vagrant
 	
-host injector
+host tools
 	hostname 192.168.56.11
+	identityfile $HOME/.vagrant.d/insecure_private_key
+	user vagrant
+
+host db
+	hostname 192.168.56.12
 	identityfile $HOME/.vagrant.d/insecure_private_key
 	user vagrant
 ~~~
