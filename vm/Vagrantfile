@@ -3,8 +3,9 @@
 
 # IP addresses of the injector and server
 @lr_subnet = "192.168.56"
-@lr_ip_injector = "#{@lr_subnet}.11"
-@lr_ip_server = "#{@lr_subnet}.10"
+@lr_ip_tools = "#{@lr_subnet}.11"
+@lr_ip_app = "#{@lr_subnet}.10"
+@lr_ip_db = "#{@lr_subnet}.12"
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -16,24 +17,34 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-  
-  config.vm.define :injector do |config|
-    config.vm.host_name = "injector"    
-    config.vm.network "private_network", ip: @lr_ip_injector    
+
+  config.vm.define :tools do |config|
+    config.vm.host_name = "tools"
+    config.vm.network "private_network", ip: @lr_ip_tools
     config.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--cpus", 1, "--memory", 512]
     end
 
-    config.vm.provision :shell, :privileged => false, :path => "injector.sh"
+    config.vm.provision :shell, :privileged => false, :path => "tools.sh"
   end
-  
-  config.vm.define :server do |config|
-    config.vm.host_name = "server"
-    config.vm.network "private_network", ip: @lr_ip_server
+
+  config.vm.define :app do |config|
+    config.vm.host_name = "app"
+    config.vm.network "private_network", ip: @lr_ip_app
     config.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--cpus", 3, "--memory", 512]
     end
-    
-    config.vm.provision :shell, :privileged => false, :path => "server.sh"
+
+    config.vm.provision :shell, :privileged => false, :path => "app.sh"
+  end
+  
+  config.vm.define :db do |config|
+    config.vm.host_name = "db"
+    config.vm.network "private_network", ip: @lr_ip_db
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--cpus", 2, "--memory", 512]
+    end
+
+    config.vm.provision :shell, :privileged => false, :path => "db.sh"
   end
 end

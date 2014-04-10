@@ -6,8 +6,10 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confd
 
 echo "=> Install Java and required tools"
 sudo apt-get install openjdk-7-jdk -y
-sudo apt-get install git -y
-sudo apt-get install curl -y
+
+echo "=> Install Apache"
+sudo apt-get install apache2 -y
+sudo ln -s gatling-charts-highcharts-1.5.5/results /var/www/gatling
 
 echo "=> Install Gatling"
 if [ ! -f gatling-charts-highcharts-1.5.5-bundle.tar.gz ]; then
@@ -17,3 +19,6 @@ if [ ! -f gatling-charts-highcharts-1.5.5-bundle.tar.gz ]; then
 else
   echo "Skipped"
 fi
+
+echo "=> Cleanup"
+sudo apt-get autoremove -y

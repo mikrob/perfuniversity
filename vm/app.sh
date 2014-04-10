@@ -10,3 +10,8 @@ sudo apt-get install git -y
 
 echo "=> Install Tomcat"
 sudo apt-get install tomcat7 -y
+sudo echo "JAVA_OPTS=\$JAVA_OPTS -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8104 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false" | sudo tee -a /usr/share/tomcat7/defaults.template
+sudo service tomcat7 restart
+
+echo "=> Cleanup"
+sudo apt-get autoremove -y
