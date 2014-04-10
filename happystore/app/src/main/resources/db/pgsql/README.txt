@@ -8,6 +8,10 @@ Shall the new role be allowed to create more new roles? (y/n) y
 createdb -O happystore -E UTF8 happystore
 exit
 #Password authentication is not allowed by default on peer connection, use socket
+vim /etc/postgresql/9.1/main/pg_hba.conf
+#Uncomment IPv4 local connections: to enable connecting with a different user with passwords
+#host    all             all             127.0.0.1/32            md5
+
 psql -h localhost -U happystore -f src/main/resources/db/pgsql/drop-schema.sql
 psql -h localhost -U happystore -f src/main/resources/db/pgsql/schema.sql
 psql -h localhost -U happystore -f src/main/resources/db/pgsql/test-data.sql
