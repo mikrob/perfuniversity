@@ -1,0 +1,3 @@
+name "appserver"
+
+depends "collectd"
