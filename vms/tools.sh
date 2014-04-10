@@ -1,11 +1,7 @@
-#!/usr/bin/env bash
-
 apt-get update --assume-yes --quiet=2
-apt-get dist-upgrade --assume-yes --quiet=2
-apt-get install -assume-yes --quiet=2  curl git byobu make libxml2-dev libxslt1-dev postgresql tomcat7 maven openjdk-7-jdk openjdk-7-jre openjdk-7-jre-headless
-
-mkdir -p /opt/devoxx/
-chown vagrant /opt/devoxx/
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
+apt-get install -assume-yes --quiet=2 curl git byobu make libxml2-dev libxslt1-dev openjdk-7-jdk
+apt-get autoremove
 
 mkdir -p /home/vagrant/.ssh/
 chmod 700 /home/vagrant/.ssh
@@ -67,8 +63,5 @@ IrCsbOIRMuaxVDfbg5acW0zgxMPFLMJk1RZB+euiP/bVAVk2Xfk34o/2hQ==
 
 chown -R vagrant:vagrant /home/vagrant/.ssh
 chmod 600 /home/vagrant/.ssh/id_rsa
-
-cd  /opt/devoxx/
-[ ! -d /opt/devoxx/perfuniversity ] && git clone git@bitbucket.org:henri_tremblay/perfuniversity.git
 
 reboot
