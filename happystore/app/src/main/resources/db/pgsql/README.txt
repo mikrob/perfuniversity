@@ -35,7 +35,7 @@ echo "initialize-database.enabled=false" >> /etc/happystore/overrides.properties
 #pgdump_all | gzip > /opt/postgresql/9.1/backup/happystore_bck_201401041530.gz
 # for restore
 #createdb -O happystore -E UTF8 happystore
-#pg_restore -C /opt/postgresql/9.1/backup/happystore_bck_201401041530.gz
+#psql -h localhost -U happystore -f /opt/postgresql/9.1/backup/happystore_bck_201401041530
 
 #For Benerator
 sudo -i -u postgres
