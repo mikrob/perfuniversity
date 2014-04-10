@@ -1,9 +1,0 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
-Vagrant::Config.run do |config|
-  config.vm.box = "hashicorp/precise64"
-  config.vm.network :hostonly, "192.168.56.11"
-  config.vm.host_name = "toolserver"
-  config.vm.customize ["modifyvm", :id, "--memory", 2048]
-end

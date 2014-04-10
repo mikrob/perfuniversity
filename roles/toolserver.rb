@@ -36,6 +36,10 @@ override_attributes({
     :graphite => {
       :graphite => {
         :listen => "0.0.0.0:81"
+      },
+      :carbon => {
+        :interface => "0.0.0.0",
+        :port => 2003
       }
     }
 })
