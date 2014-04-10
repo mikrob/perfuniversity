@@ -22,6 +22,7 @@ template "#{node.maven.home}/apache-maven-#{node.maven.version}/conf/settings.xm
 end
 
 # jenkins configuration (add jdk7 for example)
+
 ["config.xml", "hudson.tasks.Shell.xml"].each do |x|
   template "#{node.jenkins.home}/#{x}" do
     owner node.tomcat.user
@@ -36,24 +37,24 @@ ssh_accept_host_key "git@bitbucket.org" do
   user node.tomcat.user
 end
 
-# directory "#{node.jenkins.home}/jobs" do
-#   owner node.tomcat.user
-# end
+directory "#{node.jenkins.home}/jobs" do
+   owner node.tomcat.user
+end
 
-# create jobs in jenkins
+#create jobs in jenkins
 #["base_build"].each do |x|
-# ["base_build", "gatling_build", "deploy_last_build", "full_perf_build"].each do |x|
-#   directory "#{node.jenkins.home}/jobs/#{x}" do
-#     owner node.tomcat.user
-#   end
+["base_build", "gatling_build", "deploy_last_build", "full_perf_build"].each do |x|
+  directory "#{node.jenkins.home}/jobs/#{x}" do
+    owner node.tomcat.user
+  end
 
-#   template "#{node.jenkins.home}/jobs/#{x}/config.xml" do
-#     owner node.tomcat.user
-#     source "jobs/#{x}.xml.erb"
-#     notifies :restart, resources(:service => "jenkins")
-#   end
+  template "#{node.jenkins.home}/jobs/#{x}/config.xml" do
+    owner node.tomcat.user
+    source "jobs/#{x}.xml.erb"
+    notifies :restart, resources(:service => "jenkins")
+  end
 
-# end
+end
 
 ssh_key_private node.tomcat.user
 
@@ -65,4 +66,24 @@ file "#{node.jenkins.home}/ssh_agent.sh" do
 
 ssh-agent /bin/sh -c "ssh-add && $*"
 EOF
+end
+
+base_user "git"
+
+ssh_key_private "git"
+
+service "ssh" do
+  supports :restart => true
+  action auto_compute_action
+end
+
+# say ok to storage ssh key for user tomcat
+ssh_accept_host_key "git@bitbucket.org" do
+  user "git"
+end
+
+git_clone "/home/git/perfuniversity" do
+  user "git"
+  repository "git@bitbucket.org:henri_tremblay/perfuniversity.git"
+  reference "master"
 end
