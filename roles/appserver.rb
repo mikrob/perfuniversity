@@ -2,7 +2,6 @@ name('appserver')
 
 run_list([
   'recipe[tomcat]',
-  'recipe[postgresql::server]',
   'recipe[appserver]'
 ])
 
@@ -25,5 +24,13 @@ override_attributes({
   :postgresql => {
       :user_filters => ['0.0.0.0/32', '::1/128'],
       :listen_addresses => '0.0.0.0',
+  },
+  :ssh_keys => {
+    :deploy => {
+      :users => ['tomcat'],
+      :keys => [
+        'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgErCuCXVyyylhjolgxu4NdzB1ziCXtgynPcXeDZH7VJ8KMD6hq2XFp6FPx2Rwj1c4Y3PuQuye7/uN/PErb3H+10UxldARqgiB4jtcQxJUNsLTxq+mxyVyf4xE1Q3tm0SqnURK4KemDVhdeiTFkp4xNX4PbExKVbgAN49buvuFuZf1IkzypSmI7LhnOwizka+6D0FoQpVLXTxkl20ylFhgbFGWhihgzroQPRpZPLAgWpHw6k7pmIu7LQrBNMCE2INeq87ijCusfJOFxxof2FicYyiEUNwKgzUgnYcp48eLGwyF/msVTiPe2b6JMTOR1h64wDgTEqixNbrhj7GcGgn/ tomcat@precise64'
+      ]
     }
+  }
 })
