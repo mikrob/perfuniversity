@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>wget http://192.168.56.11/jenkins/job/build%20happystore/ws/happystore/app/target/happystore-1.0-SNAPSHOT.war
+eval $(ssh-agent)
+ssh-add ~/.ssh/id_rsa
+scp happystore-1.0-SNAPSHOT.war tomcat@192.168.56.10:
+ssh tomcat@192.168.56.10 &apos;mv happystore-1.0-SNAPSHOT.war happystore.war&apos;
+ssh tomcat@192.168.56.10 &apos;mv happystore.war /opt/tomcat/instances/happystore/webapps/&apos;
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

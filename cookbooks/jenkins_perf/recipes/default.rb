@@ -42,8 +42,8 @@ directory "#{node.jenkins.home}/jobs" do
 end
 
 #create jobs in jenkins
-#["base_build"].each do |x|
-["base_build", "gatling_build", "deploy_last_build", "full_perf_build"].each do |x|
+=begin
+["build_happystore", "deploy_happystore", "gatling_build"].each do |x|
   directory "#{node.jenkins.home}/jobs/#{x}" do
     owner node.tomcat.user
   end
@@ -55,6 +55,7 @@ end
   end
 
 end
+=end
 
 ssh_key_private node.tomcat.user
 
