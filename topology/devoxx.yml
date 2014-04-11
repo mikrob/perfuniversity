@@ -4,6 +4,11 @@
     :type: linux_chef
     :roles:
       - appserver
+  :dbserver:
+    :hostname: 192.168.56.12
+    :type: linux_chef
+    :roles:
+      - dbserver
   :toolserver:
     :hostname: 192.168.56.11
     :type: linux_chef
