@@ -19,6 +19,4 @@ collectd_plugin "write_graphite" do
 EOF
 end
 
-postgresql_database "happystore:database"
-
 
