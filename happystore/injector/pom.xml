@@ -151,9 +151,6 @@
           <includes>
             <include>**/*.scala</include>
           </includes>
-          <jvmArgs>
-            <jvmArg>-Dserver=localhost</jvmArg>
-          </jvmArgs>
         </configuration>
       </plugin>
     </plugins>
