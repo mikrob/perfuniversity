@@ -16,7 +16,7 @@ override_attributes({
           }
         },
         :env => {
-          "JAVA_OPTS" => "-XX:MaxPermSize=128m -Xmx512m -Xms128m -Dmetrics.graphite.enabled=true -Dmetrics.graphite.port=2003 -Dmetrics.graphite.host=192.168.56.11 -Dspring.profiles.active=\"postgresql\"",
+          "JAVA_OPTS" => "-XX:MaxPermSize=128m -Xmx512m -Xms128m -Dmetrics.graphite.enabled=true -Dmetrics.graphite.port=2003 -Dmetrics.graphite.host=192.168.56.11 -Dspring.profiles.active=\"postgresql\" -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8104 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false",
         }
     },
 
