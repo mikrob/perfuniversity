@@ -1,0 +1,3 @@
+name "dbserver"
+
+depends "collectd"
