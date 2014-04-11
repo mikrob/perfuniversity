@@ -65,7 +65,7 @@
       <property name="properties">
         <props>
           <prop key="dataSource.driverClassName">org.postgresql.Driver</prop>
-          <prop key="dataSource.url">jdbc:postgresql://localhost/happystore</prop>
+          <prop key="dataSource.url">jdbc:postgresql://192.168.56.12/happystore</prop>
           <prop key="dataSource.username">happystore</prop>
           <prop key="dataSource.password">happystore</prop>
           <prop key="dataSource.pool.maxIdle">10</prop>
