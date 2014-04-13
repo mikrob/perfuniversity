@@ -1,5 +1,5 @@
 PATH
-  remote: /Users/mikael/developpement/infra/chef/master-cap
+  remote: e:/Projets/master-cap
   specs:
     master-cap (0.1)
       capistrano (~> 2)
@@ -68,6 +68,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   capistrano
