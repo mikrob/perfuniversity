@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-  config.ssh.forward_agent = true
+  #config.ssh.forward_agent = true
     
   config.vm.define :tools do |config|
     config.vm.host_name = "tools"
