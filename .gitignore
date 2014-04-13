@@ -13,3 +13,5 @@ happystore/injector/src/test/cache/
 .vagrant/
 #?
 cache/
+#Gemfile
+Gemfile.lock
