@@ -13,11 +13,15 @@ vagrant up
 vagrant ssh app
 Mot de passe: vagrant
 Puis ajouter votre clef publique dans .ssh/authorized_keys
-ssh-copy-id ~/.ssh/id_rsa.pub vagrant@192.168.56.10
+ssh-copy-id -i ~/.ssh/id_rsa.pub vagrant@192.168.56.10
 Si vous êtes sous windows, copiez la d'abord sous linux scp ~/.ssh/id_rsa.pub vagrant@192.168.56.10:~/.ssh/id_rsa.pub
 Reproduire cela avec 
 vagrant ssh db
 vagrant ssh tools
+
+Créer un utilisateur chef
+Reproduire la même chose pour l'utilisateur chef
+
 - tester que vous pouvez bien faire
 ssh vagrant@192.168.56.10
 ssh vagrant@192.168.56.11

@@ -35,6 +35,8 @@ cinst libiconv
 * git clone https://github.com/kitchenware/master-cap
 * cd master-cap
 * gem install nokogiri -v '1.5.10' -- --with-xml2-include=C:/Chocolatey/lib/libxml2.2.7.8.7/build/native/include --with-xml2-lib=C:/Chocolatey/lib/libxml2.redist.2.7.8.7/build/native/bin/v110/x64/Release/dynamic/cdecl --with-iconv-include=C:/Chocolatey/lib/libiconv.1.14.0.11/build/native/include --with-iconv-lib=C:/Chocolatey/lib/libiconv.redist.1.14.0.11/build/native/bin/v110/x64/Release/dynamic/cdecl --with-xslt-include=C:/Chocolatey/lib/libxslt.1.1.28.0/build/native/include --with-xslt-lib=C:/Chocolatey/lib/libxslt.redist.1.1.28.0/build/native/bin/v110/x64/Release/dynamic
+* gem install nokogiri -v '1.5.11' -- --with-xml2-include=C:/Chocolatey/lib/libxml2.2.7.8.7/build/native/include --with-xml2-lib=C:/Chocolatey/lib/libxml2.redist.2.7.8.7/build/native/bin/v110/x64/Release/dynamic/cdecl --with-iconv-include=C:/Chocolatey/lib/libiconv.1.14.0.11/build/native/include --with-iconv-lib=C:/Chocolatey/lib/libiconv.redist.1.14.0.11/build/native/bin/v110/x64/Release/dynamic/cdecl --with-xslt-include=C:/Chocolatey/lib/libxslt.1.1.28.0/build/native/include --with-xslt-lib=C:/Chocolatey/lib/libxslt.redist.1.1.28.0/build/native/bin/v110/x64/Release/dynamic
+
 * gem install bundle
 * bundle
 * Installer vagrant avec l'installer natif trouvé sur le site
