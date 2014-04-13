@@ -43,7 +43,7 @@ How to run locally
 ------------------
 ~~~bash
 cd happystore
-sh launch.sh
+sh local_launch.sh
 ~~~
 
 See the application
